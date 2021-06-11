@@ -8,7 +8,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 Vue.use(VueApollo);
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3020/graphql',
+  uri: 'https://rickandmortyapi.com/graphql',
 });
 
 const cache = new InMemoryCache();
