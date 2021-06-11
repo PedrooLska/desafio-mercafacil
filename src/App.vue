@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
-    <h1>asdasd</h1>
+  <div>
+    <h1>Teste</h1>
   </div>
 </template>
