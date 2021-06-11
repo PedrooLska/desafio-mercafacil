@@ -1,5 +1,15 @@
 <template>
   <div>
-    <h1>Teste</h1>
+    <ApolloExample />
   </div>
 </template>
+
+<script>
+import ApolloExample from './components/ApolloExample.vue';
+
+export default {
+  components: {
+    ApolloExample,
+  },
+};
+</script>

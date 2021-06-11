@@ -2,6 +2,8 @@
   "name": "desafio-mercafacil",
   "version": "0.1.0",
   "private": true,
+  "description": "## Project setup ``` yarn install ```",
+  "author": "",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -9,10 +11,12 @@
     "storybook:build": "vue-cli-service storybook:build -c config/storybook",
     "storybook:serve": "vue-cli-service storybook:serve -p 6006 -c config/storybook"
   },
+  "main": ".eslintrc.js",
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
+    "vue-apollo": "^3.0.0-beta.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
   },
@@ -30,23 +34,22 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
+    "graphql-tag": "^2.9.0",
     "node-sass": "^4.12.0",
     "prettier": "^2.2.1",
     "sass-loader": "^8.0.2",
+    "vue-cli-plugin-apollo": "~0.22.2",
     "vue-cli-plugin-storybook": "~2.0.0",
     "vue-template-compiler": "^2.6.11"
   },
-  "description": "## Project setup ``` yarn install ```",
-  "main": ".eslintrc.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PedrooLska/desafio-mercafacil.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/PedrooLska/desafio-mercafacil/issues"
   },
-  "homepage": "https://github.com/PedrooLska/desafio-mercafacil#readme"
+  "homepage": "https://github.com/PedrooLska/desafio-mercafacil#readme",
+  "keywords": [],
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PedrooLska/desafio-mercafacil.git"
+  }
 }
