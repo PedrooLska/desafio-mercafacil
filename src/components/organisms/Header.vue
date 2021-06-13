@@ -1,46 +1,35 @@
 <template>
   <header class="header">
-    <Button :text="'Back'" class="header__button" />
+    <Button :text="'Back'" />
 
     <Input
-      class="header__input"
       @inputValue="(inputValue) => changeInputValue(inputValue)"
       :placeholder="'Search'"
     />
-    <Icon
-      :icon="'fas fa-sort-amount-down-alt'"
-      :size="'fa-2x'"
-      :color="'red'"
-    />
 
-    <!-- <div class="header__icon">
-      <Icon
-        :icon="'fas fa-sort-amount-up-alt'"
-        :size="'fa-2x'"
-        :color="'gray-light'"
-      />
-    </div> -->
+    <OrderBy @changeOrderBy="changeOrderBy" :orderBy="orderBy" />
   </header>
 </template>
 
 <script>
 import Button from '../atoms/Button.vue';
 import Input from '../atoms/Input.vue';
-import Icon from '../atoms/Icon.vue';
+import OrderBy from '../molecules/OrderBy.vue';
 
 export default {
   components: {
     Button,
     Input,
-    Icon,
+    OrderBy,
   },
-  props: {
-    inputValue: {
-      type: Function,
-      default: () => '',
-    },
-  },
+  data: () => ({
+    orderBy: 'desc',
+  }),
   methods: {
+    changeOrderBy() {
+      this.orderBy === 'asc' ? (this.orderBy = 'desc') : (this.orderBy = 'asc');
+      this.$emit('orderCardByName');
+    },
     changeInputValue(valueInput) {
       this.$emit('inputValue', valueInput);
     },

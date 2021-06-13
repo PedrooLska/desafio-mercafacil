@@ -1,12 +1,16 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+
+import CharactersPage from '../components/pages/CharactersPage.vue';
 
 Vue.use(VueRouter);
 
-const routes = [];
+const routes = [
+  { path: '/', component: CharactersPage, name: 'CharactersPage' },
+];
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes,
 });

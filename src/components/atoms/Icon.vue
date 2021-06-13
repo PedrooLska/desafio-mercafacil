@@ -1,9 +1,10 @@
 <template>
-  <i class="icon" :class="[icon, size, color]"></i>
+  <i class="icon" @click="eventClick" :class="[icon, size, color]"></i>
 </template>
 
 <script>
 export default {
+  name: 'Icon',
   props: {
     icon: {
       type: String,
@@ -16,6 +17,11 @@ export default {
     color: {
       type: String,
       default: () => '',
+    },
+  },
+  methods: {
+    eventClick() {
+      this.$emit('eventClick');
     },
   },
 };

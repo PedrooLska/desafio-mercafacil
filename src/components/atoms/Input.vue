@@ -11,10 +11,6 @@
 export default {
   name: 'Input',
   props: {
-    inputValue: {
-      type: Function,
-      default: () => '',
-    },
     placeholder: {
       type: String,
       default: () => '',

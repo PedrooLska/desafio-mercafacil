@@ -1,8 +1,0 @@
-@import './breakpoints';
-
-@media (min-width: $small-device) {
-  .container {
-    width: 95%;
-    margin: 0 auto;
-  }
-}

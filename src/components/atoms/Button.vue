@@ -47,7 +47,7 @@ export default {
     @include transitionAllEaseOut;
   }
 
-  .button__text {
+  &__text {
     margin-left: 1em;
   }
 }
@@ -55,7 +55,7 @@ export default {
 @media (max-width: $extra-large-device) {
   .button {
     padding: 0.8em;
-    .button__text {
+    &__text {
       display: none;
     }
   }

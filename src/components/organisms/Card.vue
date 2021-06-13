@@ -41,14 +41,14 @@ export default {
   border-radius: 0.5em;
   color: $white-primary;
 
-  .card__column {
+  &__column {
     display: flex;
 
-    .card__column__image {
+    &__image {
       height: 200px;
     }
 
-    .card__column__description {
+    &__description {
       display: flex;
       justify-content: center;
       flex-direction: column;
