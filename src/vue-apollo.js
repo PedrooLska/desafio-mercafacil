@@ -11,15 +11,16 @@ const httpLink = createHttpLink({
   uri: 'https://rickandmortyapi.com/graphql',
 });
 
-const cache = new InMemoryCache();
-
-const apolloClient = new ApolloClient({
+const apolloCLient = new ApolloClient({
   link: httpLink,
-  cache,
+  cache: new InMemoryCache(),
+  fetchOptions: {
+    mode: 'no-cors',
+  },
 });
 
 const apolloProvider = new VueApollo({
-  defaultClient: apolloClient,
+  defaultClient: apolloCLient,
 });
 
 export default apolloProvider;
