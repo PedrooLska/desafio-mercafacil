@@ -1,5 +1,11 @@
 <template>
-  <a class="text" :href="url">{{ text }}</a>
+  <a
+    class="text"
+    @mouseover="hover = true"
+    @mouseleave="hover = false"
+    :class="{ active: validateRedirectRouterAndHover }"
+    >{{ text }}</a
+  >
 </template>
 
 <script>
@@ -10,14 +16,17 @@ export default {
       type: String,
       default: () => '',
     },
-    link: {
-      type: String,
-      default: () => '',
+    redirectRouter: {
+      type: Boolean,
+      default: () => false,
     },
   },
+  data: () => ({
+    hover: false,
+  }),
   computed: {
-    url() {
-      return this.link ? this.link : '';
+    validateRedirectRouterAndHover() {
+      return this.redirectRouter && this.hover ? true : false;
     },
   },
 };
@@ -31,6 +40,11 @@ export default {
   font-family: $font-size-small;
   color: $white-primary;
   text-decoration: none;
+  cursor: pointer;
+}
+
+.active {
   transition: all 0.3s ease-out;
+  color: red;
 }
 </style>

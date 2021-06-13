@@ -1,6 +1,10 @@
 <template>
   <div class="description">
-    <LabelAndText :labelText="'Nome'" :text="this.character.name" />
+    <LabelAndText
+      :labelText="'Nome'"
+      :text="this.character.name"
+      :redirectRouter="`/detailsCharacter/${this.character.id}`"
+    />
     <LabelAndText :labelText="'Espécie'" :text="this.character.species" />
     <LabelAndText :labelText="'Gênero'" :text="this.character.gender" />
     <LabelAndText :labelText="'Tipo'" :text="this.character.type" />

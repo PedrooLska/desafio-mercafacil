@@ -1,6 +1,20 @@
 <template>
   <div class="description">
-    <Label :text="labelText" /><Link :text="text" :link="link" />
+    <div v-if="redirectRouter">
+      <router-link
+        class="description__redirectRouter"
+        v-if="redirectRouter"
+        :to="redirectRouter"
+      >
+        <Label :text="labelText" />
+        <Link :text="text" :redirectRouter="validateRedirectRouter" />
+      </router-link>
+    </div>
+
+    <div v-else>
+      <Label :text="labelText" />
+      <Link :text="text" :redirectRouter="validateRedirectRouter" />
+    </div>
   </div>
 </template>
 
@@ -23,10 +37,24 @@ export default {
       type: String,
       default: () => '',
     },
-    link: {
+    redirectRouter: {
       type: String,
       default: () => '',
     },
   },
+  computed: {
+    validateRedirectRouter() {
+      return this.redirectRouter ? true : false;
+    },
+  },
 };
 </script>
+
+<style lang="scss" scoped>
+.description {
+  &__redirectRouter {
+    outline: none;
+    text-decoration: none;
+  }
+}
+</style>

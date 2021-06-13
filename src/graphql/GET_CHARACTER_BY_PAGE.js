@@ -4,6 +4,7 @@ const GET_CHARACTERS_BY_PAGE = gql`
   query characters($page: Int) {
     characters(page: $page) {
       results {
+        id
         name
         status
         species

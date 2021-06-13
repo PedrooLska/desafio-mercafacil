@@ -4,6 +4,7 @@ const GET_CHARACTER_BY_NAME = gql`
   query characters($name: String) {
     characters(filter: { name: $name }) {
       results {
+        id
         name
         status
         species
