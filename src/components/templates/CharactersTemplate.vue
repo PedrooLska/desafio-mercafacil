@@ -3,6 +3,7 @@
     <Header
       :showInput="true"
       :showButtonBack="true"
+      :showOrderBy="true"
       @inputValue="(value) => getCharacterByName(value)"
       @orderCardByName="orderCard(listCharacters)"
     />

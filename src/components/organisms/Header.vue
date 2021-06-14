@@ -15,7 +15,9 @@
       />
     </div>
 
-    <OrderBy @changeOrderBy="changeOrderBy" :orderBy="orderBy" />
+    <div v-show="showOrderBy">
+      <OrderBy @changeOrderBy="changeOrderBy" :orderBy="orderBy" />
+    </div>
   </header>
 </template>
 
@@ -37,6 +39,10 @@ export default {
       default: () => false,
     },
     showInput: {
+      type: Boolean,
+      default: () => true,
+    },
+    showOrderBy: {
       type: Boolean,
       default: () => true,
     },
