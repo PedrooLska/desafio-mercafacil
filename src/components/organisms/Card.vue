@@ -19,6 +19,7 @@ import cardImage from '../atoms/Image';
 import cardDescription from '../molecules/CardDescription';
 
 export default {
+  name: 'Card',
   components: {
     cardImage,
     cardDescription,
@@ -33,8 +34,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/style/scss/_includes.scss';
-@import '../../assets/style/scss/_colors.scss';
+@import '~/src/assets/style/scss/_includes.scss';
+@import '~/src/assets/style/scss/_colors.scss';
 
 .card {
   background-color: $gray-light;

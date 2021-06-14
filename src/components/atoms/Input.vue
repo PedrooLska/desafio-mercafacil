@@ -17,21 +17,21 @@ export default {
     },
   },
   methods: {
-    changeInputValue(valueInput) {
-      this.$emit('inputValue', valueInput);
+    changeInputValue(inputValue) {
+      this.$emit('inputValue', inputValue);
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/style/scss/_breakpoints.scss';
-@import '../../assets/style/scss/_colors.scss';
-@import '../../assets/style/scss/_fonts.scss';
+@import '~/src/assets/style/scss/_breakpoints.scss';
+@import '~/src/assets/style/scss/_colors.scss';
+@import '~/src/assets/style/scss/_fonts.scss';
 
 .input {
   width: 250px;
-  padding: 0.7em 1em;
+  padding: 0.6em 1em;
   border-radius: 3em;
   background-color: $gray-light;
   border: solid $gray-light 1px;

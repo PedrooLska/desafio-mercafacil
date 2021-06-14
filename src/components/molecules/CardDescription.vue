@@ -3,13 +3,17 @@
     <LabelAndText
       :labelText="'Nome'"
       :text="this.character.name"
-      :redirectRouter="`/detailsCharacter/${this.character.id}`"
+      :redirectRouter="redirectDetailsCharacter(this.character)"
     />
     <LabelAndText :labelText="'Espécie'" :text="this.character.species" />
     <LabelAndText :labelText="'Gênero'" :text="this.character.gender" />
     <LabelAndText :labelText="'Tipo'" :text="this.character.type" />
     <LabelAndText :labelText="'Origem'" :text="this.character.origin.name" />
-    <LabelAndText :labelText="'Tipo'" :text="this.character.location.name" />
+    <LabelAndText
+      :labelText="'Tipo'"
+      :text="this.character.location.name"
+      :redirectRouter="redirectLocation(this.character.location)"
+    />
   </div>
 </template>
 
@@ -25,6 +29,16 @@ export default {
     character: {
       type: Object,
       default: () => {},
+    },
+  },
+  methods: {
+    redirectDetailsCharacter(character) {
+      return character && character.id
+        ? `/detailsCharacter/${character.id}`
+        : '/';
+    },
+    redirectLocation(location) {
+      return location && location.id ? `/location/${location.id}` : '/';
     },
   },
 };

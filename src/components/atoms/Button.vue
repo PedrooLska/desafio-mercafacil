@@ -1,10 +1,15 @@
 <template>
-  <div>
-    <button class="button" v-if="showButton">
-      <i class="button__icon fas fa-arrow-left" />
-      <span class="button__text">{{ text }}</span>
-    </button>
-  </div>
+  <button class="button" @click="eventClick">
+    <div v-if="positionIcon === 'left'">
+      <i class="button__icon" :class="icon" />
+      <span class="button__text" :class="validatePositionIcon">{{ text }}</span>
+    </div>
+
+    <div v-else>
+      <span class="button__text" :class="validatePositionIcon">{{ text }}</span>
+      <i class="button__icon" :class="icon" />
+    </div>
+  </button>
 </template>
 
 <script>
@@ -13,21 +18,35 @@ export default {
   props: {
     text: {
       type: String,
-      default: () => 'NO HAVE TEXT',
+      default: () => '',
     },
-    showButton: {
-      type: Boolean,
-      default: () => true,
+    icon: {
+      type: String,
+      default: () => '',
+    },
+    positionIcon: {
+      type: String,
+      default: () => '',
+    },
+  },
+  computed: {
+    validatePositionIcon() {
+      return this.positionIcon === 'left' ? '--icon-left' : '--icon-right';
+    },
+  },
+  methods: {
+    eventClick() {
+      this.$emit('eventClick');
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/style/scss/_breakpoints.scss';
-@import '../../assets/style/scss/_colors.scss';
-@import '../../assets/style/scss/_fonts.scss';
-@import '../../assets/style/scss/_includes.scss';
+@import '~/src/assets/style/scss/_breakpoints.scss';
+@import '~/src/assets/style/scss/_colors.scss';
+@import '~/src/assets/style/scss/_fonts.scss';
+@import '~/src/assets/style/scss/_includes.scss';
 
 .button {
   display: flex;
@@ -47,8 +66,12 @@ export default {
     @include transitionAllEaseOut;
   }
 
-  &__text {
+  .--icon-left {
     margin-left: 1em;
+  }
+
+  .--icon-right {
+    margin-right: 1em;
   }
 }
 

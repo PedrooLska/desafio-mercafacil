@@ -1,11 +1,19 @@
 <template>
   <header class="header">
-    <Button :text="'Back'" />
+    <div v-show="showButtonBack">
+      <Button
+        :text="'Back'"
+        :icon="'fas fa-arrow-left'"
+        :positionIcon="'left'"
+      />
+    </div>
 
-    <Input
-      @inputValue="(inputValue) => changeInputValue(inputValue)"
-      :placeholder="'Search'"
-    />
+    <div v-show="showInput">
+      <Input
+        @inputValue="(inputValue) => changeInputValue(inputValue)"
+        :placeholder="'Search'"
+      />
+    </div>
 
     <OrderBy @changeOrderBy="changeOrderBy" :orderBy="orderBy" />
   </header>
@@ -17,10 +25,21 @@ import Input from '../atoms/Input.vue';
 import OrderBy from '../molecules/OrderBy.vue';
 
 export default {
+  name: 'Header',
   components: {
     Button,
     Input,
     OrderBy,
+  },
+  props: {
+    showButtonBack: {
+      type: Boolean,
+      default: () => false,
+    },
+    showInput: {
+      type: Boolean,
+      default: () => true,
+    },
   },
   data: () => ({
     orderBy: 'desc',
@@ -30,8 +49,8 @@ export default {
       this.orderBy === 'asc' ? (this.orderBy = 'desc') : (this.orderBy = 'asc');
       this.$emit('orderCardByName');
     },
-    changeInputValue(valueInput) {
-      this.$emit('inputValue', valueInput);
+    changeInputValue(inputValue) {
+      this.$emit('inputValue', inputValue);
     },
   },
 };
@@ -45,6 +64,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 1em 0;
+  height: 50px;
 }
 
 @media (max-width: $small-device) {

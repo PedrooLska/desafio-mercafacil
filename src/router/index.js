@@ -1,12 +1,13 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import CharactersPage from '../components/pages/CharactersPage.vue';
-
 Vue.use(VueRouter);
 
+const CharactersPage = () =>
+  import('../components/templates/CharactersTemplate.vue');
+
 const routes = [
-  { path: '/', component: CharactersPage, name: 'CharactersPage' },
+  { path: '/', component: CharactersPage, name: 'characterPage' },
 ];
 
 const router = new VueRouter({

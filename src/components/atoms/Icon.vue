@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/style/scss/_colors.scss';
+@import '~/src/assets/style/scss/_colors.scss';
 
 .icon {
   cursor: pointer;

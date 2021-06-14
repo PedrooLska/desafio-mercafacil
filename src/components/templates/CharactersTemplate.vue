@@ -1,6 +1,8 @@
 <template>
-  <div>
+  <div class="wrapper">
     <Header
+      :showInput="true"
+      :showButtonBack="true"
       @inputValue="(value) => getCharacterByName(value)"
       @orderCardByName="orderCard(listCharacters)"
     />
@@ -13,6 +15,22 @@
       />
     </div>
 
+    <div class="pageButtons">
+      <Button
+        :text="'Back Page'"
+        :icon="'fas fa-arrow-left'"
+        :positionIcon="'left'"
+        @eventClick="removePageGetCharacters()"
+      />
+      <span />
+      <Button
+        :text="'Next Page'"
+        :icon="'fas fa-arrow-right'"
+        :positionIcon="'right'"
+        @eventClick="addPageGetCharacters()"
+      />
+    </div>
+
     <Spinner v-if="loading" />
   </div>
 </template>
@@ -21,14 +39,17 @@
 import GET_CHARACTERS_BY_PAGE from '../../graphql/GET_CHARACTER_BY_PAGE';
 import GET_CHARACTER_BY_NAME from '../../graphql/GET_CHARACTER_BY_NAME';
 import Header from '../organisms/Header.vue';
-import Spinner from '../atoms/Spinner.vue';
 import Card from '../organisms/Card.vue';
+import Spinner from '../atoms/Spinner.vue';
+import Button from '../atoms/Button.vue';
 
 export default {
+  name: 'CharactersPage',
   components: {
     Header,
-    Spinner,
     Card,
+    Spinner,
+    Button,
   },
   data: () => ({
     listCharacters: [],
@@ -59,14 +80,14 @@ export default {
 
       this.loading = false;
     },
-    async getCharacterByName(valueInput) {
+    async getCharacterByName(inputValue) {
       this.loading = true;
 
       try {
         const { data } = await this.$apollo.mutate({
           mutation: GET_CHARACTER_BY_NAME,
           variables: {
-            name: valueInput,
+            name: inputValue,
           },
           loadingKey: 'carlos',
         });
@@ -87,13 +108,21 @@ export default {
         return oldValue.name - newValue.name;
       });
     },
+    addPageGetCharacters() {
+      this.page++;
+      this.getCharactersByPage(this.page);
+    },
+    removePageGetCharacters() {
+      this.page--;
+      this.getCharactersByPage(this.page);
+    },
   },
 };
 </script>
 
 <style lang="scss">
-@import './src/assets/style/scss/_colors.scss';
-@import './src/assets/style/scss/_breakpoints.scss';
+@import '~/src/assets/style/scss/_colors.scss';
+@import '~/src/assets/style/scss/_breakpoints.scss';
 
 .grid {
   display: grid;
@@ -101,9 +130,19 @@ export default {
   grid-gap: 1em;
 }
 
+.pageButtons {
+  display: flex;
+  justify-content: center;
+  margin: 1em 0;
+
+  span {
+    margin: 1em 0.5em;
+  }
+}
+
 @media (max-width: $small-device) {
-  .grid {
-    padding: 0 1em 1em;
+  .wrapper {
+    padding: 0 1em 0 1em;
   }
 }
 </style>

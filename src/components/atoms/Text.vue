@@ -15,8 +15,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/style/scss/_colors.scss';
-@import '../../assets/style/scss/_fonts.scss';
+@import '~/src/assets/style/scss/_colors.scss';
+@import '~/src/assets/style/scss/_fonts.scss';
 
 .text {
   font-family: $font-size-medium;
