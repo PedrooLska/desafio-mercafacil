@@ -1,11 +1,9 @@
 <template>
   <div>
     <Header
-      :showInput="false"
       :showButtonBack="true"
-      :showOrderBy="false"
-      @inputValue="(value) => getCharacterByName(value)"
-      @orderCardByName="orderCard(listCharacters)"
+      :showSearchBar="false"
+      @backPage="backPage"
     />
   </div>
 </template>
@@ -16,6 +14,11 @@ import Header from '../organisms/Header.vue';
 export default {
   components: {
     Header,
+  },
+  methods: {
+    backPage() {
+      this.$router.push({ path: '/' });
+    },
   },
 };
 </script>

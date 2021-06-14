@@ -2,8 +2,8 @@
   <Icon
     @eventClick="eventClick"
     :icon="changeIcon"
-    :size="'fa-2x'"
-    :color="'gray-light'"
+    :size="'2x'"
+    :color="'-gray-light'"
   />
 </template>
 
@@ -15,15 +15,12 @@ export default {
   components: {
     Icon,
   },
-  props: {
-    orderBy: {
-      type: String,
-      default: () => '',
-    },
-  },
+  data: () => ({
+    orderBy: 'asc',
+  }),
   computed: {
     changeIcon() {
-      return this.orderBy == 'asc'
+      return this.orderBy === 'asc'
         ? 'fas fa-sort-amount-up-alt'
         : 'fas fa-sort-amount-down-alt';
     },
@@ -31,6 +28,7 @@ export default {
   methods: {
     eventClick() {
       this.$emit('changeOrderBy');
+      this.orderBy === 'asc' ? (this.orderBy = 'desc') : (this.orderBy = 'asc');
     },
   },
 };

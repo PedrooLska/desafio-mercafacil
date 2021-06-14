@@ -1,23 +1,15 @@
 <template>
   <div class="wrapper">
     <Header
-      :showInput="true"
-      :showButtonBack="true"
-      :showOrderBy="true"
+      :showButtonBack="false"
+      :showSearchBar="true"
       @inputValue="(value) => getCharacterByName(value)"
       @orderCardByName="orderCard(listCharacters)"
     />
 
     <div v-if="!loading">
-      <div class="grid">
-        <Card
-          v-for="character in listCharacters"
-          :character="character"
-          :key="character.id"
-        />
-      </div>
-
-      <PageButtons
+      <CardsAndPageButtons
+        :listCharacters="listCharacters"
         @removePageGetCharacters="removePageGetCharacters"
         @addPageGetCharacters="addPageGetCharacters"
       />
@@ -31,16 +23,14 @@
 import GET_CHARACTERS_BY_PAGE from '../../graphql/GET_CHARACTER_BY_PAGE';
 import GET_CHARACTER_BY_NAME from '../../graphql/GET_CHARACTER_BY_NAME';
 import Header from '../organisms/Header.vue';
-import Card from '../organisms/Card.vue';
-import PageButtons from '../molecules/PageButtons.vue';
+import CardsAndPageButtons from '../organisms/CardsAndPageButton.vue';
 import Spinner from '../atoms/Spinner.vue';
 
 export default {
   name: 'CharactersPage',
   components: {
     Header,
-    Card,
-    PageButtons,
+    CardsAndPageButtons,
     Spinner,
   },
   data: () => ({
@@ -120,16 +110,6 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(450px, 2fr));
   grid-gap: 1em;
-}
-
-.pageButtons {
-  display: flex;
-  justify-content: center;
-  margin: 1em 0;
-
-  span {
-    margin: 1em 0.5em;
-  }
 }
 
 @media (max-width: $small-device) {

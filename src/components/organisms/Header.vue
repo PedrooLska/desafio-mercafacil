@@ -1,23 +1,24 @@
 <template>
   <header class="header">
-    <div v-show="showButtonBack">
+    <div>
       <Button
+        v-show="showButtonBack"
         :text="'Back'"
         :icon="'fas fa-arrow-left'"
         :positionIcon="'left'"
+        @eventClick="backPage"
       />
     </div>
 
-    <div v-show="showInput">
+    <div class="header__searchBar" v-show="showSearchBar">
       <Input
         @inputValue="(inputValue) => changeInputValue(inputValue)"
         :placeholder="'Search'"
       />
+      <OrderBy @changeOrderBy="changeOrderBy" />
     </div>
 
-    <div v-show="showOrderBy">
-      <OrderBy @changeOrderBy="changeOrderBy" :orderBy="orderBy" />
-    </div>
+    <div></div>
   </header>
 </template>
 
@@ -38,11 +39,7 @@ export default {
       type: Boolean,
       default: () => false,
     },
-    showInput: {
-      type: Boolean,
-      default: () => true,
-    },
-    showOrderBy: {
+    showSearchBar: {
       type: Boolean,
       default: () => true,
     },
@@ -52,11 +49,13 @@ export default {
   }),
   methods: {
     changeOrderBy() {
-      this.orderBy === 'asc' ? (this.orderBy = 'desc') : (this.orderBy = 'asc');
       this.$emit('orderCardByName');
     },
     changeInputValue(inputValue) {
       this.$emit('inputValue', inputValue);
+    },
+    backPage() {
+      this.$emit('backPage');
     },
   },
 };
@@ -67,10 +66,14 @@ export default {
 
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 1em 0;
   height: 50px;
+  &__searchBar {
+    display: flex;
+    align-items: center;
+  }
 }
 
 @media (max-width: $small-device) {
