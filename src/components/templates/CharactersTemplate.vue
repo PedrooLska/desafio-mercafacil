@@ -7,27 +7,18 @@
       @orderCardByName="orderCard(listCharacters)"
     />
 
-    <div class="grid" v-if="!loading">
-      <Card
-        v-for="character in listCharacters"
-        :character="character"
-        :key="character.id"
-      />
-    </div>
+    <div v-if="!loading">
+      <div class="grid">
+        <Card
+          v-for="character in listCharacters"
+          :character="character"
+          :key="character.id"
+        />
+      </div>
 
-    <div class="pageButtons">
-      <Button
-        :text="'Back Page'"
-        :icon="'fas fa-arrow-left'"
-        :positionIcon="'left'"
-        @eventClick="removePageGetCharacters()"
-      />
-      <span />
-      <Button
-        :text="'Next Page'"
-        :icon="'fas fa-arrow-right'"
-        :positionIcon="'right'"
-        @eventClick="addPageGetCharacters()"
+      <PageButtons
+        @removePageGetCharacters="removePageGetCharacters"
+        @addPageGetCharacters="addPageGetCharacters"
       />
     </div>
 
@@ -40,16 +31,16 @@ import GET_CHARACTERS_BY_PAGE from '../../graphql/GET_CHARACTER_BY_PAGE';
 import GET_CHARACTER_BY_NAME from '../../graphql/GET_CHARACTER_BY_NAME';
 import Header from '../organisms/Header.vue';
 import Card from '../organisms/Card.vue';
+import PageButtons from '../molecules/PageButtons.vue';
 import Spinner from '../atoms/Spinner.vue';
-import Button from '../atoms/Button.vue';
 
 export default {
   name: 'CharactersPage',
   components: {
     Header,
     Card,
+    PageButtons,
     Spinner,
-    Button,
   },
   data: () => ({
     listCharacters: [],
@@ -108,12 +99,12 @@ export default {
         return oldValue.name - newValue.name;
       });
     },
-    addPageGetCharacters() {
-      this.page++;
-      this.getCharactersByPage(this.page);
-    },
     removePageGetCharacters() {
       this.page--;
+      this.getCharactersByPage(this.page);
+    },
+    addPageGetCharacters() {
+      this.page++;
       this.getCharactersByPage(this.page);
     },
   },
