@@ -1,24 +1,22 @@
-# desafio-mercafacil
+### Pré-requisitos
 
-## Project setup
-```
-yarn install
-```
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Yarn](https://yarnpkg.com/) ou [NPM](https://www.npmjs.com/). 
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+### 🎲 Rodando o Projeto
 
-### Compiles and minifies for production
-```
-yarn build
-```
+```bash
+# Clone este repositório
+$ git clone <https://github.com/PedrooLska/desafio-mercafacil>
 
-### Lints and fixes files
-```
-yarn lint
-```
+# Acesse a pasta do projeto no terminal/cmd
+$ cd desafio-mercafacil
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# Instale as dependências
+$ yarn install ou npm i 
+
+# Execute a aplicação em modo de desenvolvimento
+$ yarn serve ou npm run serve
+
+# O servidor inciará na porta:8080 - acesse <http://localhost:8080>
+```
