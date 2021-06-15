@@ -6,13 +6,13 @@
         v-if="redirectRouter"
         :to="redirectRouter"
       >
-        <Label :text="labelText" />
+        <Label :text="labelText" :textStyle="'label'" />
         <Link :text="text" :redirectRouter="validateRedirectRouter" />
       </router-link>
     </div>
 
     <div v-else>
-      <Label :text="labelText" />
+      <Label :text="labelText" :textStyle="'label'" />
       <Link :text="text" :redirectRouter="validateRedirectRouter" />
     </div>
   </div>
@@ -38,13 +38,13 @@ export default {
       default: () => '',
     },
     redirectRouter: {
-      type: String,
-      default: () => '',
+      type: Object,
+      default: () => {},
     },
   },
   computed: {
     validateRedirectRouter() {
-      return this.redirectRouter ? true : false;
+      return this.redirectRouter && this.redirectRouter.path ? true : false;
     },
   },
 };

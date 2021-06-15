@@ -5,6 +5,7 @@
         v-for="character in listCharacters"
         :character="character"
         :key="character.id"
+        :urlImage="character.image"
       />
     </div>
 
@@ -17,7 +18,7 @@
 </template>
 
 <script>
-import Card from './Card.vue';
+import Card from './CardCharacter.vue';
 import PageButtons from '../molecules/PageButtons.vue';
 
 export default {

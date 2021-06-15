@@ -1,5 +1,5 @@
 <template>
-  <img class="image" :src="urlImage" :alt="alt" />
+  <img :class="{ imageArround: imageArround }" :src="urlImage" :alt="alt" />
 </template>
 
 <script>
@@ -14,12 +14,16 @@ export default {
       type: String,
       default: () => 'No Have Alt Image',
     },
+    imageArround: {
+      type: Boolean,
+      default: () => false,
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.image {
+.imageArround {
   border-radius: 0.5em 0 0 0.5em;
 }
 </style>

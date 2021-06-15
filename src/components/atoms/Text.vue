@@ -1,5 +1,8 @@
 <template>
-  <span class="text">{{ text }}: </span>
+  <span v-if="semicon" class="text" :class="`text-${this.textStyle}`"
+    >{{ text }}:
+  </span>
+  <span v-else class="text" :class="`text-${this.textStyle}`">{{ text }} </span>
 </template>
 
 <script>
@@ -10,6 +13,14 @@ export default {
       type: String,
       default: () => '',
     },
+    textStyle: {
+      type: String,
+      default: () => '',
+    },
+    semicon: {
+      type: Boolean,
+      default: () => false,
+    },
   },
 };
 </script>
@@ -19,8 +30,19 @@ export default {
 @import '~/src/assets/style/scss/_fonts.scss';
 
 .text {
-  font-family: $font-size-medium;
   color: $white-primary;
-  font-weight: bold;
+
+  &-label {
+    font-weight: bold;
+    font-family: $font-size-medium;
+  }
+
+  &-text {
+    font-family: $font-size-medium;
+  }
+
+  &-h4 {
+    font-size: $font-size-h4;
+  }
 }
 </style>

@@ -20,8 +20,13 @@ const GET_CHARACTER_BY_NAME = gql`
           name
         }
         episode {
+          id
           name
           air_date
+          episode
+          characters {
+            image
+          }
         }
       }
     }

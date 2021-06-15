@@ -20,8 +20,13 @@ const GET_CHARACTERS_BY_PAGE = gql`
           name
         }
         episode {
+          id
           name
           air_date
+          episode
+          characters {
+            image
+          }
         }
       }
     }
