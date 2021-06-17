@@ -71,7 +71,6 @@ export default {
           variables: {
             name: inputValue,
           },
-          loadingKey: 'carlos',
         });
 
         this.listCharacters = data.characters.results;
@@ -105,12 +104,6 @@ export default {
 <style lang="scss">
 @import '~/src/assets/style/scss/_colors.scss';
 @import '~/src/assets/style/scss/_breakpoints.scss';
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 2fr));
-  grid-gap: 1em;
-}
 
 @media (max-width: $small-device) {
   .wrapper {
